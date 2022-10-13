@@ -4,6 +4,10 @@
   --clr-secondary: white;
   --clr-primary: black;
   --clr-overlay: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  --clr-modal-overlay: linear-gradient(
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.85)
+  );
 
   /* font */
   --gf-primary: "Roboto", sans-serif;
@@ -11,6 +15,8 @@
   /* border */
   --border-black: 0.2rem solid black;
   --border-white: 0.2rem solid white;
+  --text-shadow-white: 0.05rem 0.05rem rgb(207, 205, 205);
+  --box-shadow-navbar: 0 0.5rem 0.5rem rgb(78, 78, 78);
 }
 * {
   box-sizing: border-box;
@@ -23,11 +29,16 @@ body {
 }
 h1 {
   text-transform: capitalize;
+  margin: 1rem;
+  padding: 1rem;
+}
+h3 {
+  font-size: 0.9rem;
 }
 button {
   margin: 0.5rem;
   padding: 0.5rem 1rem;
-  font-weight: 700;
+  font-weight: 900;
   border-radius: 15px;
 
   border: var(--border-black);
@@ -43,22 +54,18 @@ button {
   color: var(--clr-secondary);
   border: var(--border-white);
 }
-.dvt::before {
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: aqua;
-}
+/* HOME PAGE */
 /* NAVBAR */
 nav {
   width: 100%;
+  position: fixed;
+  top: 0;
   background-color: var(--clr-primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: var(--box-shadow-navbar);
 }
 .logo-container {
   width: 190px;
@@ -76,19 +83,69 @@ nav {
   border: var(--border-white);
   color: var(--clr-secondary);
 }
-/* HOME PAGE */
+/* HOME-SECTION */
 .overlay {
   height: 100vh;
   width: 100vw;
   background: var(--clr-overlay);
 }
+.home-section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home {
+  width: 100%;
+}
+.nottinder-inscription {
+  text-shadow: var(--text-shadow-white);
+}
+.nottinder-inscription::after {
+  content: "\00AE";
+  font-size: 1rem;
+}
+/* MODAL */
+.authorization-modal-overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: var(--clr-modal-overlay);
+}
+.authorization-modal {
+  background-color: var(--clr-secondary);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  padding: 2rem;
+}
+.fiX-icon {
+  font-size: 1.1rem;
+  float: right;
+}
+.modal-submit-btn {
+  background-color: var(--clr-primary);
+  border: var(--border-black);
+  color: var(--clr-secondary);
+  font-size: 0.6rem;
+}
+/* END OF HOME PAGE */
 
 /* RESPONISVNES */
 
 @media screen and (min-width: 768px) {
+  h3 {
+    font-size: 1.1rem;
+  }
   button {
     font-weight: 900;
   }
+  /* HOME PAGE */
   /* NAVBAR */
   nav {
     flex-direction: row;
@@ -100,5 +157,17 @@ nav {
   .nav-btn {
     margin: 0 1rem 0 0;
   }
-  /* HOME PAGE */
+  /* HOME SECTION */
+  /* MODAL */
+  .authorization-modal {
+    max-width: 500px;
+    max-height: 800px;
+  }
+  .fiX-icon {
+    font-size: 1.5rem;
+  }
+  .modal-submit-btn {
+    font-size: 0.9rem;
+  }
+  /* END OF HOMEPAGE */
 }
