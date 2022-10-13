@@ -1,15 +1,8 @@
-import logo from "./logo.svg";
-import "./App.css";
-
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import OnBoarding from "./pages/OnBoarding";
 function App() {
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>Coming Soon...</p>
-      </header>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default App;
