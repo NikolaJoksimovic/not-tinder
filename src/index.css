@@ -1,13 +1,104 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+:root {
+  /* colors */
+  --clr-secondary: white;
+  --clr-primary: black;
+  --clr-overlay: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+
+  /* font */
+  --gf-primary: "Roboto", sans-serif;
+
+  /* border */
+  --border-black: 0.2rem solid black;
+  --border-white: 0.2rem solid white;
+}
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+body {
+  font-family: var(--gf-primary);
+  text-align: center;
+}
+h1 {
+  text-transform: capitalize;
+}
+button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  border-radius: 15px;
+
+  border: var(--border-black);
+  color: var(--clr-primary);
+  background: var(--clr-secondary);
+}
+.primary-btn {
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.primary-btn:hover {
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary);
+  border: var(--border-white);
+}
+.dvt::before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+}
+/* NAVBAR */
+nav {
+  width: 100%;
+  background-color: var(--clr-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.logo-container {
+  width: 190px;
+  margin: 0.3rem;
+}
+.logo {
+  width: 100%;
+  object-fit: contain;
+}
+.nav-btn {
+  margin: 0 1rem 1rem 0;
+}
+.nav-btn:hover {
+  background-color: var(--clr-primary);
+  border: var(--border-white);
+  color: var(--clr-secondary);
+}
+/* HOME PAGE */
+.overlay {
+  height: 100vh;
+  width: 100vw;
+  background: var(--clr-overlay);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* RESPONISVNES */
+
+@media screen and (min-width: 768px) {
+  button {
+    font-weight: 900;
+  }
+  /* NAVBAR */
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .logo-container {
+    margin: 1rem;
+  }
+  .nav-btn {
+    margin: 0 1rem 0 0;
+  }
+  /* HOME PAGE */
 }
