@@ -23,46 +23,50 @@ const AuthorizationModal = ({ setShowModal }) => {
   return (
     <div className='authorization-modal-overlay'>
       <div className='authorization-modal'>
+        <FiX onClick={handleClick} className='fiX-icon'></FiX>
         <header>
-          <FiX onClick={handleClick} className='fiX-icon'></FiX>
-          <h3>{isSignUp ? "CREATE ACCOUNT" : "LOG IN"}</h3>
+          <div className='create-acc-inscription'>
+            <h3>{isSignUp ? "CREATE ACCOUNT" : "LOG IN"}</h3>
+          </div>
           <p>
-            By clicking Log in, you agree to our terms. Learn how we proess your
-            data in our Privacy plicy.
+            By clicking Log in, you agree to our terms. Learn how we process
+            your data in our Privacy plicy and Cookie Policy.
           </p>
-          <form action='' onSubmit={handleSubmit}>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              placeholder='email'
-              required={true}
-              onChange={handleChange}
-            />
-            <input
-              type='password'
-              id='password'
-              name='password'
-              placeholder='password'
-              required={true}
-              onChange={handleChange}
-            />
-            <input
-              type='confirmPassword'
-              id='confirmPassword'
-              name='confirmPassword'
-              placeholder='confirmPassword'
-              required={true}
-              onChange={handleChange}
-            />
-            <button type='submit' className='modal-submit-btn'>
-              {isSignUp ? "CREATE ACCOUNT" : "LOG IN"}
-            </button>
-            <p>{error}</p>
-          </form>
+        </header>
+        <form action='' onSubmit={handleSubmit} className='modal-form'>
+          <input
+            type='email'
+            id='email'
+            name='email'
+            placeholder='email'
+            required={true}
+            onChange={handleChange}
+          />
+          <input
+            type='password'
+            id='password'
+            name='password'
+            placeholder='password'
+            required={true}
+            onChange={handleChange}
+          />
+          <input
+            type='password'
+            id='confirmPassword'
+            name='confirmPassword'
+            placeholder='confirmPassword'
+            required={true}
+            onChange={handleChange}
+          />
+          <button type='submit' className='modal-submit-btn'>
+            {isSignUp ? "CREATE ACCOUNT" : "LOG IN"}
+          </button>
+          <p>{error}error</p>
+        </form>
+        <footer>
           <hr />
           <h3>GET THE APP</h3>
-        </header>
+        </footer>
       </div>
     </div>
   );

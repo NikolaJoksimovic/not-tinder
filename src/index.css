@@ -25,20 +25,24 @@
 }
 body {
   font-family: var(--gf-primary);
-  text-align: center;
 }
 h1 {
   text-transform: capitalize;
   margin: 1rem;
   padding: 1rem;
+  font-size: 2.5rem;
 }
 h3 {
   font-size: 0.9rem;
+}
+p {
+  font-size: 0.6rem;
 }
 button {
   margin: 0.5rem;
   padding: 0.5rem 1rem;
   font-weight: 900;
+  font-size: 0.7rem;
   border-radius: 15px;
 
   border: var(--border-black);
@@ -53,6 +57,9 @@ button {
   background-color: var(--clr-primary);
   color: var(--clr-secondary);
   border: var(--border-white);
+}
+.height-500 {
+  min-height: 500px;
 }
 /* HOME PAGE */
 /* NAVBAR */
@@ -85,8 +92,8 @@ nav {
 }
 /* HOME-SECTION */
 .overlay {
-  height: 100vh;
   width: 100vw;
+  height: 500px;
   background: var(--clr-overlay);
 }
 .home-section {
@@ -121,32 +128,67 @@ nav {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
+  max-width: 350px;
   height: 80%;
+  min-height: 450px;
   padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.create-acc-inscription {
+  position: relative;
+}
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .fiX-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.5rem 0.5rem 0 0;
   font-size: 1.1rem;
-  float: right;
+}
+.authorization-modal p {
+  width: 75%;
+  max-width: 300px;
+  padding: 0.2rem;
+  margin: 1rem auto 0 auto;
+}
+input[type="email"],
+input[type="password"] {
+  padding: 0.1rem;
+  margin: 0.1rem auto 0.1rem auto;
+  width: 100%;
+  max-width: 300px;
 }
 .modal-submit-btn {
   background-color: var(--clr-primary);
   border: var(--border-black);
   color: var(--clr-secondary);
   font-size: 0.6rem;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* END OF HOME PAGE */
 
 /* RESPONISVNES */
 
 @media screen and (min-width: 768px) {
+  h1 {
+    font-size: 3.5rem;
+  }
   h3 {
     font-size: 1.1rem;
   }
   button {
     font-weight: 900;
+    font-size: 1rem;
   }
-  /* HOME PAGE */
-  /* NAVBAR */
   nav {
     flex-direction: row;
     justify-content: space-between;
@@ -157,17 +199,34 @@ nav {
   .nav-btn {
     margin: 0 1rem 0 0;
   }
-  /* HOME SECTION */
-  /* MODAL */
   .authorization-modal {
-    max-width: 500px;
-    max-height: 800px;
+    max-width: 400px;
+    min-height: 700px;
   }
   .fiX-icon {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    margin: 0.8rem 0.8rem 0 0;
   }
   .modal-submit-btn {
     font-size: 0.9rem;
   }
-  /* END OF HOMEPAGE */
+}
+@media screen and (min-width: 1170px) {
+  h1 {
+    font-size: 4.5rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+  }
+  button {
+    font-size: 1.2rem;
+  }
+  .authorization-modal {
+    max-width: 500px;
+    min-height: 800px;
+  }
+  .fiX-icon {
+    font-size: 1.5rem;
+    margin: 1rem 1rem 0 0;
+  }
 }
