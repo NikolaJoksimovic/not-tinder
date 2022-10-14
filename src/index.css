@@ -13,10 +13,12 @@
   --gf-primary: "Roboto", sans-serif;
 
   /* border */
-  --border-black: 0.2rem solid black;
-  --border-white: 0.2rem solid white;
-  --text-shadow-white: 0.05rem 0.05rem rgb(207, 205, 205);
-  --box-shadow-navbar: 0 0.5rem 0.5rem rgb(78, 78, 78);
+  --border-black: 0.2em solid black;
+  --border-white: 0.2em solid white;
+  --text-shadow-white: 0.03em 0.03em rgb(255, 255, 255);
+  --box-shadow-navbar: 0 0.5em 0.5em rgb(78, 78, 78);
+  --btn-shadow-primary: 0 0.5em 0.5em rgb(78, 78, 78);
+  --btn-shadow-secondary: 0 0.5em 0.5em rgb(173, 173, 173);
 }
 * {
   box-sizing: border-box;
@@ -28,26 +30,68 @@ body {
 }
 h1 {
   text-transform: capitalize;
-  margin: 1rem;
-  padding: 1rem;
+  text-align: center;
+  margin: 0.5em;
+  padding: 0.5em;
   font-size: 2.5rem;
+}
+h2 {
 }
 h3 {
   font-size: 0.9rem;
 }
+h4 {
+}
+h5 {
+}
 p {
   font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  padding: 0.5em;
+  margin: 0.5em;
 }
+
 button {
-  margin: 0.5rem;
-  padding: 0.5rem 1rem;
+  margin: 0.5em;
+  padding: 0.5em 1em;
   font-weight: 900;
   font-size: 0.7rem;
   border-radius: 15px;
+  cursor: pointer;
 
   border: var(--border-black);
   color: var(--clr-primary);
   background: var(--clr-secondary);
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  button {
+    font-size: 0.85rem;
+  }
+  p {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+}
+@media screen and (min-width: 1180px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+  }
+  button {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 0.8rem;
+    letter-spacing: 0.09em;
+  }
 }
 .primary-btn {
   text-transform: uppercase;
@@ -58,175 +102,182 @@ button {
   color: var(--clr-secondary);
   border: var(--border-white);
 }
-.height-500 {
-  min-height: 500px;
+.height-700 {
+  min-height: 700px;
 }
-/* HOME PAGE */
-/* NAVBAR */
-nav {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  background-color: var(--clr-primary);
+.height-600 {
+  min-height: 600px;
+}
+.height-500 {
+  /* AKO IKADA TREBA DA SE PRODUZI DOLE KOD ROTIRANJA EKRANA */
+  /* min-height: 500px; */
+}
+.height-400 {
+  min-height: 400px;
+}
+.center-flex-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.center-flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+/* HOME PAGE */
+.overlay {
+  display: flex;
+  flex-direction: column;
+  background: var(--clr-overlay);
+}
+/* NAVBAR */
+nav {
+  height: 4rem;
+  background-color: var(--clr-primary);
+  justify-content: space-between !important;
   box-shadow: var(--box-shadow-navbar);
 }
 .logo-container {
-  width: 190px;
-  margin: 0.3rem;
+  height: 4rem;
 }
 .logo {
-  width: 100%;
   object-fit: contain;
+  height: 100%;
+  padding: 0.5em;
 }
 .nav-btn {
-  margin: 0 1rem 1rem 0;
-}
-.nav-btn:hover {
-  background-color: var(--clr-primary);
-  border: var(--border-white);
-  color: var(--clr-secondary);
+  text-transform: none;
 }
 /* HOME-SECTION */
-.overlay {
-  width: 100vw;
-  height: 500px;
-  background: var(--clr-overlay);
-}
 .home-section {
-  height: 100vh;
-  width: 100vw;
+  height: calc(100vh - 4rem);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.home {
-  width: 100%;
 }
 .nottinder-inscription {
   text-shadow: var(--text-shadow-white);
+  position: relative;
 }
 .nottinder-inscription::after {
   content: "\00AE";
-  font-size: 1rem;
+  position: absolute;
+  top: 0.5em;
+  font-size: 0.6em;
+}
+.create-acc-btn {
+  box-shadow: var(--btn-shadow-secondary);
+}
+.create-acc-btn:hover {
+  box-shadow: var(--btn-shadow-primary);
+}
+@media screen and (min-width: 768px) {
+  nav {
+    height: 5rem;
+  }
+  .logo-container {
+    height: 5rem;
+  }
+  .home-section {
+    height: calc(100vh - 5rem);
+  }
+}
+@media screen and (min-width: 1180px) {
+  nav {
+    height: 5.5rem;
+  }
+  .logo-container {
+    height: 5.5rem;
+  }
+  .home-section {
+    height: calc(100vh - 5.5rem);
+  }
 }
 /* MODAL */
 .authorization-modal-overlay {
-  position: absolute;
   width: 100vw;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   background: var(--clr-modal-overlay);
 }
 .authorization-modal {
-  background-color: var(--clr-secondary);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 350px;
-  height: 80%;
-  min-height: 450px;
-  padding: 2rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.create-acc-inscription {
   position: relative;
+  width: 80%;
+  height: 80%;
+  max-width: 300px;
+  max-height: 600px;
+  background-color: var(--clr-secondary);
+  justify-content: space-around !important;
 }
-.modal-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.authorization-modal header {
+  text-align: center;
+}
+.create-acc-inscription p {
+  width: 90%;
+  font-weight: 400;
 }
 .fiX-icon {
+  font-size: 1.5rem;
   position: absolute;
   top: 0;
   right: 0;
-  margin: 0.5rem 0.5rem 0 0;
-  font-size: 1.1rem;
+  padding: 0.1em;
+  margin: 0.1em;
+  transition: all 0.5s;
+  cursor: pointer;
 }
-.authorization-modal p {
-  width: 75%;
-  max-width: 300px;
-  padding: 0.2rem;
-  margin: 1rem auto 0 auto;
+.fiX-icon:hover {
+  transform: rotate(180deg);
+}
+.modal-form {
+  width: 100%;
+}
+.form-inputs {
+  width: 100%;
+  margin-bottom: 2em;
 }
 input[type="email"],
 input[type="password"] {
-  padding: 0.1rem;
-  margin: 0.1rem auto 0.1rem auto;
-  width: 100%;
-  max-width: 300px;
+  width: 90%;
+  padding: 0.15em;
+  margin: 0.4em 0 0.4em 0;
+  border: var(--border-black);
+}
+.modal-error-msg {
+  text-align: center;
 }
 .modal-submit-btn {
-  background-color: var(--clr-primary);
-  border: var(--border-black);
-  color: var(--clr-secondary);
-  font-size: 0.6rem;
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  box-shadow: var(--btn-shadow-secondary);
 }
-/* END OF HOME PAGE */
-
-/* RESPONISVNES */
-
-@media screen and (min-width: 768px) {
-  h1 {
-    font-size: 3.5rem;
+.modal-submit-btn:hover {
+  box-shadow: var(--btn-shadow-primary);
+}
+/* ROTATED PHONE.. */
+@media screen and (max-height: 500px) {
+  .authorization-modal {
+    width: 80%;
+    max-width: 600px;
   }
-  h3 {
-    font-size: 1.1rem;
-  }
-  button {
-    font-weight: 900;
-    font-size: 1rem;
-  }
-  nav {
+  .modal-form {
+    width: 80%;
     flex-direction: row;
     justify-content: space-between;
   }
-  .logo-container {
-    margin: 1rem;
-  }
-  .nav-btn {
-    margin: 0 1rem 0 0;
-  }
-  .authorization-modal {
-    max-width: 400px;
-    min-height: 700px;
-  }
-  .fiX-icon {
-    font-size: 1.3rem;
-    margin: 0.8rem 0.8rem 0 0;
-  }
   .modal-submit-btn {
-    font-size: 0.9rem;
+    width: 100px;
   }
 }
-@media screen and (min-width: 1170px) {
-  h1 {
-    font-size: 4.5rem;
-  }
-  h3 {
-    font-size: 1.3rem;
-  }
-  button {
-    font-size: 1.2rem;
-  }
+@media screen and (min-width: 768px) {
   .authorization-modal {
-    max-width: 500px;
-    min-height: 800px;
-  }
-  .fiX-icon {
-    font-size: 1.5rem;
-    margin: 1rem 1rem 0 0;
+    max-width: 350px;
   }
 }
+@media screen and (min-width: 1180px) {
+  .authorization-modal {
+    max-width: 420px;
+  }
+}
+/* END OF HOME PAGE */

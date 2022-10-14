@@ -6,12 +6,12 @@ const Navbar = ({ authorizationToken, setShowModal }) => {
     setShowModal(true);
   };
   return (
-    <nav>
+    <nav className='center-flex-row'>
       <div className='logo-container'>
         <img src={logo} alt='logo.png' className='logo' />
       </div>
       {!authorizationToken && (
-        <button className='nav-btn' onClick={handleClick}>
+        <button className='primary-btn nav-btn' onClick={handleClick}>
           Log in
         </button>
       )}

@@ -13,19 +13,19 @@ const Home = () => {
   // RETURN
   return (
     <div className='overlay'>
-      <section className='home-section'>
-        <Navbar
-          authorizationToken={authorizationToken}
-          setShowModal={setShowModal}
-        ></Navbar>
+      <Navbar
+        authorizationToken={authorizationToken}
+        setShowModal={setShowModal}
+      ></Navbar>
+      <section className='home-section center-flex-column height-400'>
         <h1 className='nottinder-inscription'>not tinder</h1>
-        <button className='primary-btn' onClick={handleClick}>
+        <button className='primary-btn create-acc-btn' onClick={handleClick}>
           {authorizationToken ? "signout" : "Create Account"}
         </button>
-        {showModal && (
-          <AuthorizationModal setShowModal={setShowModal}></AuthorizationModal>
-        )}
       </section>
+      {showModal && (
+        <AuthorizationModal setShowModal={setShowModal}></AuthorizationModal>
+      )}
     </div>
   );
 };
