@@ -5,7 +5,7 @@ import AuthorizationModal from "../components/AuthorizationModal";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
-  const authorizationToken = false;
+  const authorizationToken = true;
   const handleClick = (e) => {
     setShowModal(true);
   };
@@ -20,7 +20,7 @@ const Home = () => {
       <section className='home-section center-flex-column height-400'>
         <h1 className='nottinder-inscription'>not tinder</h1>
         <button className='primary-btn create-acc-btn' onClick={handleClick}>
-          {authorizationToken ? "signout" : "Create Account"}
+          {authorizationToken ? "Sign out" : "Create Account"}
         </button>
       </section>
       {showModal && (

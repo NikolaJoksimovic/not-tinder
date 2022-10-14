@@ -5,6 +5,7 @@ const Navbar = ({ authorizationToken, setShowModal }) => {
   const handleClick = (e) => {
     setShowModal(true);
   };
+  console.log();
   return (
     <nav className='center-flex-row'>
       <div className='logo-container'>
