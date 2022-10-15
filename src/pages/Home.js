@@ -2,10 +2,11 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
 import AuthorizationModal from "../components/AuthorizationModal";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
-  const authorizationToken = true;
+  const authorizationToken = false;
   const handleClick = (e) => {
     setShowModal(true);
   };
@@ -22,6 +23,7 @@ const Home = () => {
         <button className='primary-btn create-acc-btn' onClick={handleClick}>
           {authorizationToken ? "Sign out" : "Create Account"}
         </button>
+        <Link to='/onboarding'>~~~ Link to onboarding page ~~~</Link>
       </section>
       {showModal && (
         <AuthorizationModal setShowModal={setShowModal}></AuthorizationModal>
