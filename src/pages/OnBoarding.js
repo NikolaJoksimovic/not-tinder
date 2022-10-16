@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-
 const OnBoarding = () => {
   const [checkBoxes, setCheckBoxes] = useState({
     my: false, // [m]an_gender-identit[y]
@@ -33,7 +32,7 @@ const OnBoarding = () => {
   };
   const handleRadioClick = (e) => {
     const id = e.target.id;
-    const firstLetter = id.substring(0, 1);
+    // const firstLetter = id.substring(0, 1);
     const secondLetter = id.substring(id.length - 1, id.length);
     const name = id.substring(0, 1) + id.substring(id.length - 1, id.length);
     let newCheckBoxes =
