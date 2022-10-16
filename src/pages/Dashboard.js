@@ -51,16 +51,16 @@ const Dashboard = () => {
             >
               <div
                 style={{ backgroundImage: "url(" + character.url + ")" }}
-                className='card'
+                className='card card-name'
               >
                 <h3>{character.name}</h3>
               </div>
             </TinderCard>
           ))}
         </div>
-      </div>
-      <div className='swipe-info'>
-        {lastDirection ? <p>You swiped {lastDirection}</p> : <p></p>}
+        <div className='swipe-info'>
+          {lastDirection ? <p>You swiped {lastDirection}</p> : <p></p>}
+        </div>
       </div>
     </div>
   );
