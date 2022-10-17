@@ -441,6 +441,8 @@ input[type="password"] {
 }
 /* END OF ONBOARDING PAGE */
 /* DASHBOARD */
+
+/* TINDER CARDS IMPORTED */
 .swipe {
   position: absolute;
 }
@@ -475,4 +477,51 @@ input[type="password"] {
 .swipe-info {
   text-align: center;
 }
+/* END OF TINDER CARDS */
+
+/* CHAT CONTAINER */
+/* CHAT HEADER */
+.chat-header-container {
+  width: 100%;
+  height: 4rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.chat-header-container::after {
+  content: "";
+  position: absolute;
+  width: 96%;
+  height: 0.1rem;
+  left: 2%;
+  top: 105%;
+  background-color: var(--clr-primary);
+  box-shadow: var(--btn-shadow-secondary);
+}
+.chat-header-profile {
+  height: 100%;
+  justify-content: left !important;
+}
+.chat-header-img-container {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 100%;
+  margin: 0 0.5em 0 0.5em;
+  border: var(--border-black);
+}
+.chat-header-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+}
+.log-out-icon {
+  font-size: 1.8rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0.5em;
+}
+/* END OF CHAT HEADER */
+/* END OF CHAT CONTAINER */
 /* END OF DASHBOARD */
