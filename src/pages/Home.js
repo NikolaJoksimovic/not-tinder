@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
-  const authorizationToken = false;
+  const authorizationToken = false; //nisi ulogovan nemas autorizaciju
   const handleClick = (e) => {
     setShowModal(true);
   };
@@ -23,9 +23,6 @@ const Home = () => {
         <button className='primary-btn create-acc-btn' onClick={handleClick}>
           {authorizationToken ? "Sign out" : "Create Account"}
         </button>
-        {/* just links for preview */}
-        <Link to='/onboarding'>~~~ Link to onboarding page ~~~</Link>
-        <Link to='/dashboard'>~~~ Link to dashboard page ~~~</Link>
       </section>
       {showModal && (
         <AuthorizationModal setShowModal={setShowModal}></AuthorizationModal>

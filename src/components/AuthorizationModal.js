@@ -1,6 +1,8 @@
 import React from "react";
 import { FiX } from "react-icons/fi";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate as navigate } from "react-router-dom";
 
 const AuthorizationModal = ({ setShowModal }) => {
   const isSignUp = true;
@@ -9,16 +11,35 @@ const AuthorizationModal = ({ setShowModal }) => {
     password: "",
     confirmPassword: "",
   });
-  const [input, setInput] = useState(null);
   const [error, setError] = useState(null);
+  // CLOSE BTN
   const handleClick = (e) => {
     setShowModal(false);
   };
+  // INPUT CHANGE
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  // SUBMIT(CREATE ACCOUTN) BTN+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      if (isSignUp && user.password !== user.confirmPassword) {
+        setError("Passwords neet to match!");
+        return;
+      }
+      const response = await axios.post("http://localhost:8000/signup", {
+        user,
+      });
+      const success = response.status === 201;
+      if (success) {
+        navigate("/onboarding");
+      } else {
+        console.log("Greska pri axios requestu..");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className='authorization-modal-overlay center-flex-column'>
@@ -46,6 +67,7 @@ const AuthorizationModal = ({ setShowModal }) => {
               placeholder='email'
               required={true}
               onChange={handleChange}
+              value={user.email}
             />
             <input
               type='password'
@@ -54,6 +76,7 @@ const AuthorizationModal = ({ setShowModal }) => {
               placeholder='password'
               required={true}
               onChange={handleChange}
+              value={user.password}
             />
             <input
               type='password'
@@ -62,6 +85,7 @@ const AuthorizationModal = ({ setShowModal }) => {
               placeholder='confirmPassword'
               required={true}
               onChange={handleChange}
+              value={user.confirmPassword}
             />
           </div>
           <button type='submit' className='primary-btn modal-submit-btn'>
