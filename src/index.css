@@ -10,6 +10,11 @@
   --clr-primary05: rgba(0, 0, 0, 0.5);
   --clr-gray: rgb(212, 211, 211, 0.801);
   --clr-overlay: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  --clr-overlay-img: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.7)
+  );
   --clr-modal-overlay: linear-gradient(
     rgba(0, 0, 0, 0.85),
     rgba(0, 0, 0, 0.85)
@@ -183,14 +188,17 @@ button {
 .overlay {
   display: flex;
   flex-direction: column;
-  background: var(--clr-overlay);
+  /* GLEDAJ POSLE DA ODKOMENTARISES BOX-SHADOWE AKO NECES SLIKU.. */
+  /* background: var(--clr-overlay); */
+  background: var(--clr-overlay-img),
+    url("./images/homepage_bg.jpg") top/cover no-repeat;
 }
 /* NAVBAR */
 nav {
   height: 4rem;
   background-color: var(--clr-primary);
   justify-content: space-between !important;
-  box-shadow: var(--box-shadow-navbar);
+  /* box-shadow: var(--box-shadow-navbar); */
 }
 .logo-container {
   height: 4rem;
@@ -219,10 +227,10 @@ nav {
   font-size: 0.6em;
 }
 .create-acc-btn {
-  box-shadow: var(--btn-shadow-secondary);
+  /* box-shadow: var(--btn-shadow-secondary); */
 }
 .create-acc-btn:hover {
-  box-shadow: var(--btn-shadow-primary);
+  /* box-shadow: var(--btn-shadow-primary); */
 }
 @media screen and (min-width: 768px) {
   nav {
