@@ -28,9 +28,12 @@
   --border-gray: 0.2em solid rgba(212, 211, 211, 0.801);
   --border-white: 0.2em solid white;
   --border-input: 0.2rem solid rgb(226, 226, 226);
+
   --text-shadow-white: 0.03em 0.03em rgb(255, 255, 255);
   --text-shadow-gray: 0.03em 0.03em rgb(117, 117, 117);
+
   --box-shadow-navbar: 0 0.5em 0.5em rgb(78, 78, 78);
+
   --btn-shadow-primary: 0 0.5em 0.5em rgb(78, 78, 78);
   --btn-shadow-secondary: 0 0.5em 0.5em rgb(173, 173, 173);
 
@@ -90,7 +93,7 @@ button {
   margin: 0.5em;
   padding: 0.5em 1em;
   font-weight: 900;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   border-radius: 15px;
   cursor: pointer;
 
@@ -109,7 +112,7 @@ button {
     font-size: 1.2rem;
   }
   button {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
   }
   p {
     font-size: 0.75rem;
@@ -134,7 +137,7 @@ button {
     font-size: 2.4rem;
   }
   button {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   p {
     font-size: 0.8rem;
@@ -188,8 +191,6 @@ button {
 .overlay {
   display: flex;
   flex-direction: column;
-  /* GLEDAJ POSLE DA ODKOMENTARISES BOX-SHADOWE AKO NECES SLIKU.. */
-  /* background: var(--clr-overlay); */
   background: var(--clr-overlay-img),
     url("./images/homepage_bg.jpg") top/cover no-repeat;
 }
@@ -224,13 +225,7 @@ nav {
   content: "\00AE";
   position: absolute;
   top: 0.5em;
-  font-size: 0.6em;
-}
-.create-acc-btn {
-  /* box-shadow: var(--btn-shadow-secondary); */
-}
-.create-acc-btn:hover {
-  /* box-shadow: var(--btn-shadow-primary); */
+  font-size: 0.5em;
 }
 @media screen and (min-width: 768px) {
   nav {
@@ -398,7 +393,7 @@ input[type="password"] {
 }
 .form-submit-btn:hover {
   box-shadow: var(--btn-shadow-primary);
-  border: var(--border-black);
+  border: var(--border-white);
 }
 @media screen and (min-width: 768px) {
   .onboarding {
@@ -442,7 +437,6 @@ input[type="password"] {
   .profile-img-container {
     width: 350px;
     height: 250px;
-    /* border-radius: var(); */
   }
   .form-submit-btn {
     width: 290px;
