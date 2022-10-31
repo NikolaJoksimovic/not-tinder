@@ -2,16 +2,19 @@ import React from "react";
 import { FiX } from "react-icons/fi";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate as navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const AuthorizationModal = ({ setShowModal }) => {
   const isSignUp = true;
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
     confirmPassword: "",
   });
   const [error, setError] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   // CLOSE BTN
   const handleClick = (e) => {
     setShowModal(false);
@@ -20,22 +23,36 @@ const AuthorizationModal = ({ setShowModal }) => {
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
   // SUBMIT(CREATE ACCOUTN) BTN
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       if (isSignUp && user.password !== user.confirmPassword) {
-        setError("Passwords neet to match!");
+        setError("Passwords need to match!");
         return;
       }
-      const response = await axios.post("http://localhost:8000/signup", {
-        user,
-      });
-      const success = response.status === 201;
-      if (success) {
-        navigate("/onboarding");
+
+      // axios post i prosledjujem usera..
+      const response = await axios.post(
+        `http://localhost:8000/${isSignUp ? "signup" : "login"}`,
+        {
+          email: user.email,
+          password: user.password,
+        }
+      );
+      if (response.status === 201) {
+        setCookie("Email", response.data.user.email);
+        setCookie("UserId", response.data.user.user_id);
+        setCookie("AuthToken", response.data.token);
+        if (isSignUp) {
+          navigate("/onboarding");
+        } else {
+          navigate("/dashboard");
+        }
       } else {
-        console.log("Greska pri axios requestu..");
+        console.log("Something went wrong with the sign up ...");
       }
     } catch (error) {
       console.log(error);
@@ -78,15 +95,19 @@ const AuthorizationModal = ({ setShowModal }) => {
               onChange={handleChange}
               value={user.password}
             />
-            <input
-              type='password'
-              id='confirmPassword'
-              name='confirmPassword'
-              placeholder='confirmPassword'
-              required={true}
-              onChange={handleChange}
-              value={user.confirmPassword}
-            />
+            {isSignUp ? (
+              <input
+                type='password'
+                id='confirmPassword'
+                name='confirmPassword'
+                placeholder='confirmPassword'
+                required={true}
+                onChange={handleChange}
+                value={user.confirmPassword}
+              />
+            ) : (
+              <></>
+            )}
           </div>
           <button type='submit' className='primary-btn modal-submit-btn'>
             {isSignUp ? "CREATE ACCOUNT" : "LOG IN"}

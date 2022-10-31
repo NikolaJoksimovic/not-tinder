@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import { useCookies } from "react-cookie";
+
 const OnBoarding = () => {
   const [checkBoxes, setCheckBoxes] = useState({
     my: false, // [m]an_gender-identit[y]
@@ -8,8 +10,10 @@ const OnBoarding = () => {
     mt: false, // [m]an_gender-interes[t]
     wt: false,
   });
+
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]); //user je samo ime cookija
+
   const [formData, setFormData] = useState({
-    user_id: "",
     first_name: "",
     dob_day: "",
     dob_month: "",
@@ -17,7 +21,6 @@ const OnBoarding = () => {
     show_gender: "false",
     gender_identity: "",
     gender_interest: "",
-    email: "",
     url: "",
     about: "",
     matches: [],
@@ -181,11 +184,13 @@ const OnBoarding = () => {
                   onChange={handleChange}
                 />
                 <div className='profile-img-container'>
-                  <img
-                    src={formData.url}
-                    alt='Profile Pic Preview'
-                    className='profile-img'
-                  />
+                  {formData.url && (
+                    <img
+                      src={formData.url}
+                      alt='Profile Pic Preview'
+                      className='profile-img'
+                    />
+                  )}
                 </div>
               </section>
             </div>

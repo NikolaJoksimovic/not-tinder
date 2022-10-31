@@ -1,5 +1,5 @@
 const getHomePage = (req, res) => {
-  res.json("hello form routes");
+  res.json("DATABASE ACCESS GRANTED...");
 };
 
 module.exports = getHomePage;
