@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { useCookies } from "react-cookie";
+import axios from "axios";
+const { useNavigate } = require("react-router-dom");
 
 const OnBoarding = () => {
   const [checkBoxes, setCheckBoxes] = useState({
@@ -15,6 +17,8 @@ const OnBoarding = () => {
 
   const [formData, setFormData] = useState({
     first_name: "",
+    user_id: cookies.userId,
+    email: cookies.email,
     dob_day: "",
     dob_month: "",
     dob_year: "",
@@ -27,7 +31,18 @@ const OnBoarding = () => {
   });
 
   const authorizationToken = true;
-  const handleSubmit = (e) => {};
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    console.log(formData);
+    e.preventDefault();
+    const response = await axios.put("http://localhost:8000/user", {
+      formData,
+    });
+    const success = response.status === 201;
+    if (success) {
+      navigate("/dashboard");
+    }
+  };
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.type === "raido" ? e.target.checked : e.target.value;

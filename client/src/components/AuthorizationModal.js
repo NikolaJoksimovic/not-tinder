@@ -43,9 +43,10 @@ const AuthorizationModal = ({ setShowModal }) => {
         }
       );
       if (response.status === 201) {
-        setCookie("Email", response.data.user.email);
-        setCookie("UserId", response.data.user.user_id);
-        setCookie("AuthToken", response.data.token);
+        console.log(response.data.user);
+        setCookie("email", response.data.user.email);
+        setCookie("userId", response.data.user.userId);
+        setCookie("authToken", response.data.token);
         if (isSignUp) {
           navigate("/onboarding");
         } else {
@@ -56,6 +57,7 @@ const AuthorizationModal = ({ setShowModal }) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
     }
   };
   return (

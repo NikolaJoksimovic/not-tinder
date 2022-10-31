@@ -11,6 +11,7 @@ app.use(express.json());
 app.use("/", myRouter);
 app.use("/signup", myRouter);
 app.use("/users", myRouter);
+app.use("/user", myRouter);
 
 const port = process.env.PORT || 8000;
 

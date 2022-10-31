@@ -26,23 +26,23 @@ const createUser = async (req, res) => {
         msg: "User with this email alredy exists.",
       });
     }
-
-    // const sanitizedEmail = email.toLowerCase();
-
     const data = {
       user_id: generatedUserId,
       email: email,
       password: hashedPassword,
     };
-
     const insertedUser = await users.insertOne(data);
     const token = jwt.sign({ generatedUserId, email }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_TIMELIMIT,
     });
-    res.status(201).json({ user: { ...insertedUser }, token: token });
+    res
+      .status(201)
+      .json({ user: { userId: generatedUserId, email: email }, token: token });
   } catch (error) {
     console.log(error);
     res.status(500).send("Something went wrong with creating the user..");
+  } finally {
+    await client.close();
   }
 };
 
