@@ -20,7 +20,7 @@ const AuthorizationModal = ({ setShowModal }) => {
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  // SUBMIT(CREATE ACCOUTN) BTN+
+  // SUBMIT(CREATE ACCOUTN) BTN
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
