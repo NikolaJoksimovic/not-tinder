@@ -35,15 +35,11 @@ const AuthorizationModal = ({ setShowModal }) => {
       }
 
       // axios post i prosledjujem usera..
-      const response = await axios.post(
-        `http://localhost:8000/${isSignUp ? "signup" : "login"}`,
-        {
-          email: user.email,
-          password: user.password,
-        }
-      );
+      const response = await axios.post(`${isSignUp ? "/signup" : "/login"}`, {
+        email: user.email,
+        password: user.password,
+      });
       if (response.status === 201) {
-        console.log(response.data.user);
         setCookie("email", response.data.user.email);
         setCookie("userId", response.data.user.userId);
         setCookie("authToken", response.data.token);

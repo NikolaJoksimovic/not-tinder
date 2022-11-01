@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
 import AuthorizationModal from "../components/AuthorizationModal";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
