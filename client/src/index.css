@@ -549,7 +549,7 @@ input[type="password"] {
   right: 50%;
   transform: translateX(50%);
 }
-/* MATCHES DISPLAYS */
+/* MATCHES DISPLAY */
 .matches-display {
   position: absolute;
   top: 0;
@@ -616,7 +616,65 @@ input[type="password"] {
   object-fit: cover;
   border-radius: 100%;
 }
-/* CHATS DISPLAYS */
+/* CHAT DISPLAY */
+.chat-display {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
 
+  background-color: var(--clr-secondary);
+}
+.chat-header {
+  position: absolute;
+  width: 100%;
+  height: 4rem;
+  top: 0;
+  left: 0;
+}
+.chat-header::after {
+  content: "";
+  position: absolute;
+  width: 96%;
+  top: 100%;
+  left: 2%;
+  height: 0.1rem;
+  background-color: var(--clr-primary);
+  box-shadow: 0 0.3em 0.8em 0.2em var(--clr-primary02);
+}
+.chat-header .img-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2%;
+}
+.chat-body {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 4em);
+  top: 4em;
+  left: 0;
+}
+.chat {
+  padding: 2%;
+}
+.chat-input {
+  position: absolute;
+  bottom: 2%;
+  width: 100%;
+  margin: 0;
+  padding: 0 1em 0 1em;
+}
+.chat-input #textarea {
+  width: 70%;
+  max-width: 500px;
+}
+.chat .send-btn {
+  width: 30%;
+  padding: 0;
+  margin: 0;
+}
 /* END OF CHAT CONTAINER */
 /* END OF DASHBOARD */

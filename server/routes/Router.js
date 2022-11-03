@@ -9,6 +9,7 @@ const updateUser = require("../controllers/UpdateUser");
 const getOneUser = require("../controllers/GetOneUser");
 const AddMatch = require("../controllers/AddMatch");
 const getMatchedUsers = require("../controllers/GetMatchedUsers");
+const getUserMessages = require("../controllers/GetUserMessages");
 
 router.route("/").get(getHomePage);
 router.route("/users").get(getAllUsers);
@@ -18,5 +19,6 @@ router.route("/user").put(updateUser);
 router.route("/user/:id").get(getOneUser);
 router.route("/user/addmatch").put(AddMatch);
 router.route("/users/matches").get(getMatchedUsers);
+router.route("/messages").get(getUserMessages);
 
 module.exports = router;

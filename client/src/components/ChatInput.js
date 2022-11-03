@@ -6,8 +6,10 @@ const ChatInput = () => {
 
   return (
     <div className='chat-input center-flex-row'>
-      <textarea value={textArea} onChange={handleChange}></textarea>
-      <button className='send-btn'>send</button>
+      <input id='textarea' type='text' />
+      <button className='send-btn'>
+        <h5>send</h5>
+      </button>
     </div>
   );
 };

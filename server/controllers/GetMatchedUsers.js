@@ -4,7 +4,6 @@ const { MongoClient } = require("mongodb");
 const GetMatchedUsers = async (req, res) => {
   const client = new MongoClient(process.env.MONGO_URI);
   const userIds = JSON.parse(req.query.userIds);
-
   try {
     await client.connect();
     const database = client.db("app-data");

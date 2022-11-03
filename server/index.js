@@ -15,6 +15,7 @@ app.use("/users", myRouter);
 app.use("/user", myRouter);
 app.use("/user/addmatch", myRouter);
 app.use("/users/matches", myRouter);
+app.use("/messages", myRouter);
 
 const port = process.env.PORT || 8000;
 

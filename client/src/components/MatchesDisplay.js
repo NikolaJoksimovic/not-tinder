@@ -2,11 +2,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react";
 import { IoReturnDownBackOutline } from "react-icons/io5";
+import ChatDisplay from "./ChatDisplay";
 
-const MatchesDisplay = ({ setShowMatches, matches }) => {
+const MatchesDisplay = ({ setShowMatches, matches, user }) => {
+  const [showChat, setShowChat] = useState(false);
+  const [clickedMatch, setClickedMatch] = useState({});
   const [matchedProfiles, setMatchedProfiles] = useState(null);
   const matchedUserIds = matches.map(({ user_id }) => user_id);
-  const handleClick = () => {
+
+  const handleChatClick = (match) => {
+    setClickedMatch(match);
+    setShowChat(true);
+  };
+  const handleCloseClick = () => {
     setShowMatches(false);
   };
   const getMatches = async () => {
@@ -31,14 +39,18 @@ const MatchesDisplay = ({ setShowMatches, matches }) => {
         <h2>Matches</h2>
         <i className='cls-btn'>
           <IoReturnDownBackOutline
-            onClick={handleClick}
+            onClick={handleCloseClick}
           ></IoReturnDownBackOutline>
         </i>
       </div>
       <div className='matches-list'>
         {matchedProfiles &&
           matchedProfiles.map((item) => (
-            <div key={item.user_id} className='matched-item'>
+            <div
+              key={item.user_id}
+              className='matched-item'
+              onClick={() => handleChatClick(item)}
+            >
               <div className='img-container'>
                 <img src={item.url} alt='' />
               </div>
@@ -46,6 +58,13 @@ const MatchesDisplay = ({ setShowMatches, matches }) => {
             </div>
           ))}
       </div>
+      {showChat && (
+        <ChatDisplay
+          clickedMatch={clickedMatch}
+          setShowChat={setShowChat}
+          user={user}
+        ></ChatDisplay>
+      )}
     </div>
   );
 };
