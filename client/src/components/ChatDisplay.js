@@ -5,7 +5,7 @@ import Chats from "./Chats";
 const ChatDisplay = () => {
   return (
     <div className='chat-display'>
-      <Chats></Chats>
+      <Chats className='chats'></Chats>
       <ChatInput></ChatInput>
     </div>
   );

@@ -15,8 +15,6 @@ const LoginUser = async (req, res) => {
 
     if (user && potentialPassword) {
       const userId = user.user_id;
-
-      console.log(userId, email);
       const token = jwt.sign({ userId, email }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_TIMELIMIT,
       });

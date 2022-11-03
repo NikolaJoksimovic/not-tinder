@@ -1,8 +1,9 @@
 import React from "react";
 import logo from "../images/logo_white.png";
 
-const Navbar = ({ authorizationToken, setShowModal }) => {
+const Navbar = ({ setShowModal, setIsSignUp }) => {
   const handleClick = (e) => {
+    setIsSignUp(false);
     setShowModal(true);
   };
   console.log();
@@ -11,11 +12,9 @@ const Navbar = ({ authorizationToken, setShowModal }) => {
       <div className='logo-container'>
         <img src={logo} alt='logo.png' className='logo' />
       </div>
-      {!authorizationToken && (
-        <button className='primary-btn nav-btn' onClick={handleClick}>
-          Log in
-        </button>
-      )}
+      <button className='primary-btn nav-btn' onClick={handleClick}>
+        Log in
+      </button>
     </nav>
   );
 };

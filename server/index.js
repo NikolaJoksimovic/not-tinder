@@ -13,6 +13,8 @@ app.use("/", myRouter);
 app.use("/signup", myRouter);
 app.use("/users", myRouter);
 app.use("/user", myRouter);
+app.use("/user/addmatch", myRouter);
+app.use("/users/matches", myRouter);
 
 const port = process.env.PORT || 8000;
 

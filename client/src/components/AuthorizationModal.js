@@ -3,10 +3,14 @@ import { FiX } from "react-icons/fi";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 
-const AuthorizationModal = ({ setShowModal }) => {
-  const isSignUp = true;
+const AuthorizationModal = ({
+  setShowModal,
+  isSignUp,
+  cookies,
+  setCookie,
+  removeCookie,
+}) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -14,7 +18,7 @@ const AuthorizationModal = ({ setShowModal }) => {
     confirmPassword: "",
   });
   const [error, setError] = useState(null);
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
   // CLOSE BTN
   const handleClick = (e) => {
     setShowModal(false);
@@ -43,6 +47,7 @@ const AuthorizationModal = ({ setShowModal }) => {
         setCookie("email", response.data.user.email);
         setCookie("userId", response.data.user.userId);
         setCookie("authToken", response.data.token);
+
         if (isSignUp) {
           navigate("/onboarding");
         } else {

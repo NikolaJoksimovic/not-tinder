@@ -3,10 +3,12 @@ import Navbar from "../components/Navbar";
 import { useState } from "react";
 import AuthorizationModal from "../components/AuthorizationModal";
 
-const Home = () => {
+const Home = ({ cookies, setCookie, removeCookie }) => {
   const [showModal, setShowModal] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(true);
   const authorizationToken = false; //nisi ulogovan nemas autorizaciju
   const handleClick = (e) => {
+    setIsSignUp(true);
     setShowModal(true);
   };
 
@@ -16,6 +18,7 @@ const Home = () => {
       <Navbar
         authorizationToken={authorizationToken}
         setShowModal={setShowModal}
+        setIsSignUp={setIsSignUp}
       ></Navbar>
       <section className='home-section center-flex-column height-400'>
         <h1 className='nottinder-inscription'>not tinder</h1>
@@ -24,7 +27,13 @@ const Home = () => {
         </button>
       </section>
       {showModal && (
-        <AuthorizationModal setShowModal={setShowModal}></AuthorizationModal>
+        <AuthorizationModal
+          setShowModal={setShowModal}
+          isSignUp={isSignUp}
+          cookies={cookies}
+          setCookie={setCookie}
+          removeCookie={removeCookie}
+        ></AuthorizationModal>
       )}
     </div>
   );

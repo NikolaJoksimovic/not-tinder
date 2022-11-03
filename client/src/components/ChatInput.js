@@ -1,13 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const ChatInput = () => {
   const [textArea, setTextArea] = useState("");
   const handleChange = (e) => {};
+
   return (
-    <div className='chat-input'>
+    <div className='chat-input center-flex-row'>
       <textarea value={textArea} onChange={handleChange}></textarea>
-      <button>send</button>
+      <button className='send-btn'>send</button>
     </div>
   );
 };

@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoReturnDownBackOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
-const ChatHeader = () => {
-  const dummy_profile = {
-    name: "Richard Hendricks",
-    url: "https://cdn.pixabay.com/photo/2022/04/05/00/27/man-7112557_960_720.jpg",
+const ChatHeader = ({ user, cookies, setCookie, removeCookie }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    console.log("click");
+    removeCookie("userId", cookies.userId);
+    removeCookie("email", cookies.email);
+    removeCookie("authToken", cookies.authToken);
+    navigate("/");
   };
   return (
     <div className='chat-header-container'>
       <div className='chat-header-profile center-flex-row'>
         <div className='chat-header-img-container'>
-          <img
-            className='chat-header-img'
-            src='https://cdn.pixabay.com/photo/2022/04/05/00/27/man-7112557_960_720.jpg'
-            alt=''
-          />
+          <img className='chat-header-img' src={user ? user.url : ""} alt='' />
         </div>
-        <h3>Richard Hendricks</h3>
+        <h3>{""}</h3>
       </div>
-      <i className='log-out-icon'>
-        <IoReturnDownBackOutline></IoReturnDownBackOutline>
-      </i>
+      <div className='log-out-icon-container'>
+        <i className='log-out-icon'>
+          <IoReturnDownBackOutline
+            onClick={handleClick}
+          ></IoReturnDownBackOutline>
+        </i>
+      </div>
     </div>
   );
 };
