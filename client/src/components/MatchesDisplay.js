@@ -22,14 +22,12 @@ const MatchesDisplay = ({ setShowMatches, matches, user }) => {
     setShowMatches(false);
   };
 
+  // URL
+  let url = window.location.href;
+  // comment next line for app build
+  // url = "http://localhost:8000/dashboard";
+
   const getMatches = async () => {
-    // URL
-    let url = window.location.href;
-    url = url.substring(0, url.lastIndexOf("/"));
-
-    // comment next line for app build
-    // url = "http://localhost:8000/dashboard";
-
     try {
       const response = await axios.get(`${url}/users/matches`, {
         params: { userIds: JSON.stringify(matchedUserIds) },

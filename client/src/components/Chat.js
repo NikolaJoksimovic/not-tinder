@@ -7,8 +7,6 @@ const Chat = ({ user, clickedMatch }) => {
 
   // URL
   let url = window.location.href;
-  url = url.substring(0, url.lastIndexOf("/"));
-
   // comment next line for app build
   // url = "http://localhost:8000/dashboard";
   console.log(url);

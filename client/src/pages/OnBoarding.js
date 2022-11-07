@@ -31,16 +31,14 @@ const OnBoarding = () => {
   });
   const navigate = useNavigate();
 
+  // URL
+  let url = window.location.href;
+  // comment next line for app build
+  console.log("onboarding", url);
+
   // SUBMIT user info and go to dashboard
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // URL
-    let url = window.location.href;
-    url = url.substring(0, url.lastIndexOf("/"));
-
-    // comment next line for app build
-    // url = "http://localhost:8000/onboarding";
 
     const response = await axios.put(`${url}/user`, {
       formData,
