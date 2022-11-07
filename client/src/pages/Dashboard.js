@@ -3,7 +3,6 @@ import ChatContainer from "../components/ChatContainer";
 import TinderCard from "react-tinder-card";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// I have to make my own card..ONe day..
 
 const Dashboard = ({ cookies, setCookie, removeCookie }) => {
   const [user, setUser] = useState(null);
@@ -24,7 +23,6 @@ const Dashboard = ({ cookies, setCookie, removeCookie }) => {
   const getAllUsers = async () => {
     try {
       const response = await axios.get("/users");
-      // console.log(response.data.returnedUsers);
       setAllUsers(response.data.returnedUsers);
     } catch (error) {
       console.log(error);
@@ -65,13 +63,13 @@ const Dashboard = ({ cookies, setCookie, removeCookie }) => {
     }
   }, [user]);
 
+  // Tinder card functions
   const swiped = (direction, swipedUserId) => {
     if (direction === "right") {
       updateMatches(swipedUserId);
     }
     setLastDirection(direction);
   };
-
   const outOfFrame = (name) => {};
 
   return loading ? (

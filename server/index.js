@@ -4,21 +4,19 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const myRouter = require("./routes/Router");
+const mainRouter = require("./routes/Router");
+const dashRouter = require("./routes/DashRouter");
+const errorHandlerMiddleware = require("./middleware/error-handler");
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static("./public/build"));
 
 // routes
-app.use("/", myRouter);
-// app.use("/signup", myRouter);
-// app.use("/login", myRouter);
-// app.use("/user", myRouter);
-// app.use("/user/addmatch", myRouter);
-// app.use("/users", myRouter);
-// app.use("/users/matches", myRouter);
-// app.use("/messages", myRouter);
+app.use("/", mainRouter);
+app.use("/dashboard", dashRouter);
+
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 8000;
 

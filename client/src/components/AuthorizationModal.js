@@ -57,8 +57,7 @@ const AuthorizationModal = ({
         console.log("Something went wrong with the sign up ...");
       }
     } catch (error) {
-      console.log(error);
-    } finally {
+      setError(error.response.data.msg);
     }
   };
   return (
@@ -117,7 +116,7 @@ const AuthorizationModal = ({
           </button>
         </form>
         <footer>
-          <p className='modal-error-msg'>{error}error</p>
+          <p className='modal-error-msg'>{error}</p>
           <hr />
           <h3>GET THE APP</h3>
         </footer>

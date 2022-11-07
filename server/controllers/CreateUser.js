@@ -3,15 +3,14 @@ const { MongoClient } = require("mongodb");
 const { v4: uuidv4 } = require("uuid");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const CustomAPIError = require("../errors/CustomAPIError");
 
 const createUser = async (req, res) => {
+  // generate unique id
   const generatedUserId = uuidv4();
   const { email, password } = req.body;
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  if (!hashedPassword) {
-    console.log("Something wrong with hashedPassword..");
-  }
 
   const client = new MongoClient(process.env.MONGO_URI);
 
@@ -31,7 +30,13 @@ const createUser = async (req, res) => {
       email: email,
       password: hashedPassword,
     };
-    const insertedUser = await users.insertOne(data);
+    try {
+      await users.insertOne(data);
+    } catch (error) {
+      throw new CustomAPIError(
+        "Server is unavelable right now... Please try again later."
+      );
+    }
     const token = jwt.sign({ generatedUserId, email }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_TIMELIMIT,
     });
@@ -39,8 +44,6 @@ const createUser = async (req, res) => {
       .status(201)
       .json({ user: { userId: generatedUserId, email: email }, token: token });
   } catch (error) {
-    console.log(error);
-    res.status(500).send("Something went wrong with creating the user..");
   } finally {
     await client.close();
   }
