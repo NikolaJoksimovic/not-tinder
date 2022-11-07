@@ -9,6 +9,8 @@ import { useCookies } from "react-cookie";
 function App() {
   const [loading, setLoading] = useState(true);
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+  // if there is Authorization you can acces onboarding and dashboard
   const authToken = cookies.authToken;
 
   useEffect(() => {

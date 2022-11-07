@@ -5,9 +5,17 @@ const Chat = ({ user, clickedMatch }) => {
   const [userMessages, setUserMessages] = useState("");
   const [clickedMatchMessages, setClickedMatchMessages] = useState("");
 
+  // URL
+  let url = window.location.href;
+  url = url.substring(0, url.lastIndexOf("/"));
+
+  // comment next line for app build
+  // url = "http://localhost:8000/dashboard";
+  console.log(url);
+
   const getUserMessages = async () => {
     try {
-      const response = await axios.get("/messages", {
+      const response = await axios.get(`${url}/messages`, {
         params: {
           userId: user.user_id,
           matchedUserId: clickedMatch.user_id,

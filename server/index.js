@@ -6,6 +6,7 @@ const cors = require("cors");
 const app = express();
 const mainRouter = require("./routes/Router");
 const dashRouter = require("./routes/DashRouter");
+const onboardRouter = require("./routes/OnboardRouter");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
 app.use(cors());
@@ -15,6 +16,7 @@ app.use(express.static("./public/build"));
 // routes
 app.use("/", mainRouter);
 app.use("/dashboard", dashRouter);
+app.use("/onboarding", onboardRouter);
 
 app.use(errorHandlerMiddleware);
 

@@ -11,10 +11,17 @@ const Dashboard = ({ cookies, setCookie, removeCookie }) => {
   const [reload, setReload] = useState(false);
   const [lastDirection, setLastDirection] = useState();
 
+  // URL
+  let url = window.location.href;
+  url = url.substring(0, url.lastIndexOf("/"));
+
+  // comment next line for app build
+  // url = "http://localhost:8000/dashboard";
+
   // functions
   const getUser = async () => {
     try {
-      const response = await axios.get(`/user/${cookies.userId}`);
+      const response = await axios.get(`${url}/user/${cookies.userId}`);
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -22,7 +29,7 @@ const Dashboard = ({ cookies, setCookie, removeCookie }) => {
   };
   const getAllUsers = async () => {
     try {
-      const response = await axios.get("/users");
+      const response = await axios.get(`${url}/users`);
       setAllUsers(response.data.returnedUsers);
     } catch (error) {
       console.log(error);
@@ -30,7 +37,7 @@ const Dashboard = ({ cookies, setCookie, removeCookie }) => {
   };
   const updateMatches = async (matchedUserId) => {
     try {
-      const response = await axios.put("/user/addmatch", {
+      const response = await axios.put(`${url}/user/addmatch`, {
         userId: user.user_id,
         matchedUserId: matchedUserId,
       });
@@ -95,9 +102,11 @@ const Dashboard = ({ cookies, setCookie, removeCookie }) => {
           ))}
         </div>
         {lastDirection ? (
-          <h4 className='infoText'>You swiped {lastDirection}</h4>
+          <div className='infoText'>
+            <span>You swiped</span> <span>{lastDirection}!</span>
+          </div>
         ) : (
-          <h4 className='infoText' />
+          <div className='infoText' />
         )}
       </div>
       <ChatContainer

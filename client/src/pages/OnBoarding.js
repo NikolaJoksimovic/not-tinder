@@ -29,13 +29,20 @@ const OnBoarding = () => {
     about: "",
     matches: [],
   });
-
-  const authorizationToken = true;
   const navigate = useNavigate();
+
+  // SUBMIT user info and go to dashboard
   const handleSubmit = async (e) => {
-    console.log(formData);
     e.preventDefault();
-    const response = await axios.put("/user", {
+
+    // URL
+    let url = window.location.href;
+    url = url.substring(0, url.lastIndexOf("/"));
+
+    // comment next line for app build
+    // url = "http://localhost:8000/onboarding";
+
+    const response = await axios.put(`${url}/user`, {
       formData,
     });
     const success = response.status === 201;
@@ -43,14 +50,17 @@ const OnBoarding = () => {
       navigate("/dashboard");
     }
   };
+
+  // INPUT CHANGE
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.type === "raido" ? e.target.checked : e.target.value;
     setFormData({ ...formData, [name]: value });
   };
+
+  // RADIO CLICK
   const handleRadioClick = (e) => {
     const id = e.target.id;
-    // const firstLetter = id.substring(0, 1);
     const secondLetter = id.substring(id.length - 1, id.length);
     const name = id.substring(0, 1) + id.substring(id.length - 1, id.length);
     let newCheckBoxes =
@@ -59,6 +69,8 @@ const OnBoarding = () => {
         : { ...checkBoxes, ["mt"]: false, ["wt"]: false };
     setCheckBoxes({ ...newCheckBoxes, [name]: true });
   };
+
+  // RETURN
   return (
     <>
       <Navbar setShowModal={() => {}} showModal={false}></Navbar>

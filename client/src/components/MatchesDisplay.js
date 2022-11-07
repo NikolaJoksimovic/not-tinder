@@ -8,6 +8,9 @@ const MatchesDisplay = ({ setShowMatches, matches, user }) => {
   const [showChat, setShowChat] = useState(false);
   const [clickedMatch, setClickedMatch] = useState({});
   const [matchedProfiles, setMatchedProfiles] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // MATCHED IDs
   const matchedUserIds = matches.map(({ user_id }) => user_id);
 
   const handleChatClick = (match) => {
@@ -15,25 +18,36 @@ const MatchesDisplay = ({ setShowMatches, matches, user }) => {
     setShowChat(true);
   };
   const handleCloseClick = () => {
+    setLoading(true);
     setShowMatches(false);
   };
+
   const getMatches = async () => {
+    // URL
+    let url = window.location.href;
+    url = url.substring(0, url.lastIndexOf("/"));
+
+    // comment next line for app build
+    // url = "http://localhost:8000/dashboard";
+
     try {
-      const response = await axios.get(`/users/matches`, {
+      const response = await axios.get(`${url}/users/matches`, {
         params: { userIds: JSON.stringify(matchedUserIds) },
       });
       setMatchedProfiles(response.data);
     } catch (error) {
       console.log("This is the error", error);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
     getMatches();
   }, []);
 
-  // matchedProfiles ? console.log(matchedProfiles[0]) : console.log("null");
-
-  return (
+  return loading ? (
+    <></>
+  ) : (
     <div className='matches-display'>
       <div className='matches-display-header'>
         <h2>Matches</h2>

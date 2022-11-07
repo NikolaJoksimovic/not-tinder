@@ -38,11 +38,21 @@ const AuthorizationModal = ({
         return;
       }
 
+      // URL
+      let url = window.location.href;
+      url = url.substring(0, url.lastIndexOf("/"));
+
+      // comment next line for app build
+      url = "http://localhost:8000";
+
       // axios post i prosledjujem usera..
-      const response = await axios.post(`${isSignUp ? "/signup" : "/login"}`, {
-        email: user.email,
-        password: user.password,
-      });
+      const response = await axios.post(
+        `${isSignUp ? `${url}/signup` : `${url}/login`}`,
+        {
+          email: user.email,
+          password: user.password,
+        }
+      );
       if (response.status === 201) {
         setCookie("email", response.data.user.email);
         setCookie("userId", response.data.user.userId);

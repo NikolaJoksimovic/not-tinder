@@ -7,7 +7,6 @@ const ChatDisplay = ({ clickedMatch, setShowChat, user }) => {
   const handleCloseClick = () => {
     setShowChat(false);
   };
-  // console.log(clickedMatch);
   return (
     <div className='chat-display'>
       <div className='chat-header'>
