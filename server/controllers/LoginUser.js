@@ -2,6 +2,7 @@ require("dotenv").config();
 const { MongoClient } = require("mongodb");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const CustomAPIError = require("../errors/CustomAPIError");
 
 const LoginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -19,9 +20,12 @@ const LoginUser = async (req, res) => {
         expiresIn: process.env.JWT_TIMELIMIT,
       });
       res.status(201).json({ user: { email: email, userId: userId }, token });
+    } else {
     }
   } catch (error) {
-    console.log(error);
+    throw new CustomAPIError(
+      "Server is unavelable right now... Please try again later."
+    );
   } finally {
     await client.close();
   }

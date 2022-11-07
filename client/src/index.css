@@ -312,6 +312,12 @@ input[type="password"] {
 .modal-submit-btn:hover {
   box-shadow: var(--btn-shadow-primary);
 }
+.authorization-modal footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /* ROTATED PHONE.. */
 @media screen and (max-height: 500px) {
   .authorization-modal {
@@ -446,12 +452,11 @@ input[type="password"] {
   }
 }
 /* END OF ONBOARDING PAGE */
-/* DASHBOARD */
 
+/* DASHBOARD */
 .dashboard-container {
   position: relative;
 }
-
 /* TINDER CARDS IMPORTED */
 .swipe {
   position: absolute;

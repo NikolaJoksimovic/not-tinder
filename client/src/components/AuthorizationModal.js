@@ -84,6 +84,7 @@ const AuthorizationModal = ({
               id='email'
               name='email'
               placeholder='email'
+              // this required true will get you the fill this section please instead of dealing with it on the backend..
               required={true}
               onChange={handleChange}
               value={user.email}
