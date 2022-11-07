@@ -11,14 +11,17 @@ const AddMatch = require("../controllers/AddMatch");
 const getMatchedUsers = require("../controllers/GetMatchedUsers");
 const getUserMessages = require("../controllers/GetUserMessages");
 
-router.route("/").get(getHomePage);
-router.route("/users").get(getAllUsers);
+// POST
 router.route("/signup").post(createUser);
 router.route("/login").post(loginUser);
-router.route("/user").put(updateUser);
+// GET
+router.route("/").get(getHomePage);
+router.route("/users").get(getAllUsers);
 router.route("/user/:id").get(getOneUser);
-router.route("/user/addmatch").put(AddMatch);
 router.route("/users/matches").get(getMatchedUsers);
 router.route("/messages").get(getUserMessages);
+// PUT
+router.route("/user").put(updateUser);
+router.route("/user/addmatch").put(AddMatch);
 
 module.exports = router;
